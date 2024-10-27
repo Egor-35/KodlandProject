@@ -4,9 +4,9 @@ import json
 import os
 
 # Токен вашего бота
-TOKEN = 'token'
+TOKEN = 'Your_bot_token'
 # Ваш Telegram ID
-ADMIN_TELEGRAM_ID = 'Admin_id'# запишите ваш id в telegram
+ADMIN_TELEGRAM_ID = 'Your_admin_id'# запишите ваш id в telegram
 # Файлы для хранения данных
 USER_IDS_FILE = 'user_ids.json'
 USER_INFO_FILE = 'user_info.txt'
@@ -16,19 +16,20 @@ bot = telebot.TeleBot(TOKEN)
 
 # Словарь с описаниями и фотографиями моделей
 models_info = {
-    'Палочки для еды': {
-        'description': '100 руб/шт',
-        'photo_url': 'https://images.cults3d.com/xuGV64RVUHPBCcMlNI3swSTcazQ=/516x516/filters:no_upscale():format(webp)/https://fbi.cults3d.com/uploaders/25509731/illustration-file/3f763801-737d-41c6-b55f-2ac50300c647/Screenshot-2022-11-14-022030.jpg'
+    'Model_1': {
+        'description': 'Description for Model 1',
+        'photo_url': 'Photo_url_for_Model_1'
     },
-    'Осминоги': {
-        'description': '100 руб/шт',
-        'photo_url': 'https://images.cults3d.com/yfhiO_EEKIlcLW31k9GnqPbiK3U=/516x516/filters:no_upscale():format(webp)/https://fbi.cults3d.com/uploaders/14456321/illustration-file/0884f383-c610-4e51-a13f-49f2620758f6/IMG_20190316_111642.jpg'
+    'Model_2': {
+        'description': 'Description for Model 2',
+        'photo_url': 'Photo_url_for_Model_2'
     },
     'Model_3': {
         'description': 'Description for Model 3',
-        'photo_url': 'Photo_url_for_Model_3/'
+        'photo_url': 'Photo_url_for_Model_3'
     }
 }
+
 
 # Функция для загрузки ID пользователей из файла
 def load_user_ids():
@@ -63,7 +64,7 @@ def handle_start(message):
     itembtn3 = types.KeyboardButton('Предложить модель')
 
     # Проверка имени пользователя
-    if message.chat.username == 'egorroi35':
+    if message.chat.username == 'Admin_username':
         itembtn4 = types.KeyboardButton('Test')
         markup.add(itembtn4)
 
@@ -146,7 +147,7 @@ def handle_back(call):
 
 
 # Обработчик для кнопки "Test"
-@bot.message_handler(func=lambda message: message.text == 'Test' and message.chat.username == 'egorroi35')
+@bot.message_handler(func=lambda message: message.text == 'Test' and message.chat.username == 'Admin_username')
 def handle_test(message):
     markup = types.InlineKeyboardMarkup()
     btn_off = types.InlineKeyboardButton(text="Turn off bot", callback_data="turn_off")
@@ -158,7 +159,7 @@ def handle_test(message):
 
 
 # Обработчик для других пользователей, если они отправляют "Test"
-@bot.message_handler(func=lambda message: message.text == 'Test' and message.chat.username != 'egorroi35')
+@bot.message_handler(func=lambda message: message.text == 'Test' and message.chat.username != 'Admin_username')
 def handle_test_other_users(message):
     bot.send_message(message.chat.id, "У вас нет доступа к этой команде.")
 
