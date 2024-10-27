@@ -4,9 +4,9 @@ import json
 import os
 
 # Токен вашего бота
-TOKEN = '7919606920:AAErJgiLL9ASlMBEIa8kfVZ9gP-5ms3FHWY'
+TOKEN = 'token'
 # Ваш Telegram ID
-ADMIN_TELEGRAM_ID = '1877143530'
+ADMIN_TELEGRAM_ID = 'Admin_id'# запишите ваш id в telegram
 # Файлы для хранения данных
 USER_IDS_FILE = 'user_ids.json'
 USER_INFO_FILE = 'user_info.txt'
